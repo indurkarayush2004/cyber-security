@@ -49,9 +49,9 @@ Stable internet
 - we are going to use windows in virtual box..
 
   ### Let's get started - Basic overview
-  - here i am using Pure Kali linux and ia am Gonna install the Virtual machine in Kali linux
+  - here i am using Pure Kali linux and i am Gonna install the Virtual machine in Kali linux
   - In Virtual Machine we are running the Windows environment and inside that and using WAZUH for collecting the log's
-  - Here we are using Kali linux as Attacker Machine, and in kali linux we are usking 7 Basic Kali linux activities and attacks on our Windows environment after that we will gona analyze it. 
+  - Here we are using Kali linux as Attacker Machine, and in kali linux we are usking 7 Basic Kali linux activities and attacks on our Windows environment after that we will gonaa analyze it. 
 
 - Ping Sweep / Ping Test
 
@@ -66,5 +66,53 @@ Stable internet
 - RDP Connection Attempt
 
 - File Activity Simulation
-## _____________________________________________________________________________________________________
+##  _________________________________________________________________________________
+
+## Let's Get Start the Project:-(All Command for the Kali Linux)
+
+- Use sudo apt update && sudo apt upgrade -y
+
+- sudo apt install virtualbox -y
+
+- after installation Open it with using command "virtualbox".
+
+- <img width="961" height="870" alt="Screenshot_20260630_230559" src="https://github.com/user-attachments/assets/32f3a7b9-9041-40b6-9537-9734e171881b" />
+
+- This Type of Page will open
+
+- we are Going to use the windows 11 in VirtualBox for that we want ISO of that
+
+- we are Downloding the ISO of Windows 11
+- Thsis was the official link to download Windows ISO
+ https://www.microsoft.com/en-in/software-download/windows11?utm_source=chatgpt.com
+- scroll and select this option and after that agan scroll and click on Download Button 
+<img width="938" height="888" alt="Screenshot_20260630_233324" src="https://github.com/user-attachments/assets/1d25770e-ce4f-4262-9695-1cfa0330ea13" />
+
+- After that The Windows ISO Will start Downloading, it takes much time like 1-2 Hrs because it was "7.9 GB" ISO File
+- https://software.download.prss.microsoft.com/dbazure/Win11_25H2_English_x64_v2.iso?t=246713fd-bed8-43df-881f-db5d642601b5&P1=1782929142&P2=602&P3=2&P4=mI%2bNOFAEQgegPG1rUTyDaQCkyn02ZtZ6nHGtkY%2fGKwfWwHqLLPKpQ4pc1khHC2jE397AWkE%2bw1rpWqdFTQligsGy4Q7TvZ8rVKFCGHjYEZNvNuNYhKtGT%2fT2LNd4VLbNeDVY6ZQuHCTGpVsHx%2b8IJjTiQ2Av%2fTs2IzWc%2fZHmAa6tn1htryFu2ANBm5fjXg81tsiWzTyMywNtI0sqQeK0qUKUbh4jRuIOA4Vqt%2fHfmkINkFggMBFy62NkKfVYyS1Uavtk44Hu%2bfaXzynaWAnQm4JvztJQq5yFz10YS2IaT6wVktJF%2f8lGx%2blNI9%2bdwTTMX92EKCQvXXg6xvl9m7Pbow%3d%3d
+
+- copy This url and directly download the ISO file
+
+- Till then i was giving you guzz a grat tool called Free Download Manager this will encrese the speed and coppy the url what you want to download and pase in it and it will download the file faste as comparitively of Browser.
+like here i am downloading the ISO file in just some fue minutes
+
+- <img width="887" height="826" alt="Screenshot_20260701_004706" src="https://github.com/user-attachments/assets/22a99742-cffa-4144-9ab4-170249695db9" />
+
+- return to the project
+
+- Open The VirtualBox and click on New and type Name, Select Folder, TSO image, Type, Version
+
+<img width="1377" height="864" alt="Screenshot_20260701_005521" src="https://github.com/user-attachments/assets/9c1314bf-ccef-4b32-aabb-2c95e22c59bf" />
+
+if comewone want with Unattended installlation, but i am not preffering with Unattended installlation and complete this process fill the information 
+<img width="841" height="502" alt="Screenshot_20260701_010343" src="https://github.com/user-attachments/assets/43b58cf6-38f4-4956-8b1c-d706e830ed58" />
+
+- i am going with this method :
+
+- <img width="841" height="502" alt="Screenshot_20260701_010756" src="https://github.com/user-attachments/assets/e9c3b80e-3109-44e9-8bfc-fb818e06d49f" />
+
+- after than click on finish, adter finishing the setup this will come on your screen
+
+  <img width="1377" height="870" alt="Screenshot_20260701_011529" src="https://github.com/user-attachments/assets/7073d743-6bbf-4243-b4dd-8f0d63437f40" />
+
 
