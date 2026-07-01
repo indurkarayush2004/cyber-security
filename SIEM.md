@@ -116,3 +116,39 @@ if comewone want with Unattended installlation, but i am not preffering with Una
   <img width="1377" height="870" alt="Screenshot_20260701_011529" src="https://github.com/user-attachments/assets/7073d743-6bbf-4243-b4dd-8f0d63437f40" />
 
 
+### SIEM Project — Wazuh + Kali + Windows VM
+
+- PHASE 1 — Lab Setup & Architecture
+
+┌─────────────────────┐         ┌──────────────────────────┐
+│   Kali Linux        │         │   Windows 10/11 VM       │
+│   (Attacker)        │◄───────►│   (Target / Log Source)  │
+│   + Wazuh Server    │         │   + Wazuh Agent          │
+│   + Wazuh Dashboard │         │                          │
+└─────────────────────┘         └──────────────────────────┘
+         │                                   │
+         └──────── Same NAT/Host-Only ───────┘
+                     Network
+
+### PHASE 2 — Install Wazuh Server on Kali Linux
+- Step 1 — System Requirements Check
+
+- Step 2 — Install Wazuh Server in kali linux 
+sudo apt update && sudo apt upgrade -y
+curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh
+curl -sO https://packages.wazuh.com/4.7/config.yml
+chmod +x wazuh-install.sh
+sudo bash wazuh-install.sh -a
+
+done Installation here start Wazuh With https>//<Kali Ip>
+
+<img width="1246" height="729" alt="Screenshot_20260701_203847" src="https://github.com/user-attachments/assets/7edc660e-2943-49f1-946b-29a54988a3b4" />
+
+- Now Login with The given username and password and generally username is "admin"
+- Wazuh server was done and will download wazuh agent in windows virtual machine 
+- go to the Deploy Agent and Fill the information
+- enter your base os IP addres in the field of server address
+- type agent name as you like.
+- then it will generate you an url, command just coppy it and runn this command into Windows PowerShell (Run as Administrator)
+
+  <img width="1025" height="885" alt="Screenshot_20260701_204951" src="https://github.com/user-attachments/assets/55dc4e52-645c-4cf8-86d2-0ed0bae0f4b1" />
