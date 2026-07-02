@@ -89,11 +89,11 @@ Stable internet
 <img width="938" height="888" alt="Screenshot_20260630_233324" src="https://github.com/user-attachments/assets/1d25770e-ce4f-4262-9695-1cfa0330ea13" />
 
 - After that The Windows ISO Will start Downloading, it takes much time like 1-2 Hrs because it was "7.9 GB" ISO File
-- https://software.download.prss.microsoft.com/dbazure/Win11_25H2_English_x64_v2.iso?t=246713fd-bed8-43df-881f-db5d642601b5&P1=1782929142&P2=602&P3=2&P4=mI%2bNOFAEQgegPG1rUTyDaQCkyn02ZtZ6nHGtkY%2fGKwfWwHqLLPKpQ4pc1khHC2jE397AWkE%2bw1rpWqdFTQligsGy4Q7TvZ8rVKFCGHjYEZNvNuNYhKtGT%2fT2LNd4VLbNeDVY6ZQuHCTGpVsHx%2b8IJjTiQ2Av%2fTs2IzWc%2fZHmAa6tn1htryFu2ANBm5fjXg81tsiWzTyMywNtI0sqQeK0qUKUbh4jRuIOA4Vqt%2fHfmkINkFggMBFy62NkKfVYyS1Uavtk44Hu%2bfaXzynaWAnQm4JvztJQq5yFz10YS2IaT6wVktJF%2f8lGx%2blNI9%2bdwTTMX92EKCQvXXg6xvl9m7Pbow%3d%3d
+- Get the Iso from official site
 
 - copy This url and directly download the ISO file
 
-- Till then i was giving you guzz a grat tool called Free Download Manager this will encrese the speed and coppy the url what you want to download and pase in it and it will download the file faste as comparitively of Browser.
+- Till then i was giving you a great tool called Free Download Manager this will encrese the speed and coppy the url what you want to download and pase in it and it will download the file faste as comparitively of Browser.
 like here i am downloading the ISO file in just some fue minutes
 
 - <img width="887" height="826" alt="Screenshot_20260701_004706" src="https://github.com/user-attachments/assets/22a99742-cffa-4144-9ab4-170249695db9" />
@@ -120,15 +120,8 @@ if comewone want with Unattended installlation, but i am not preffering with Una
 
 - PHASE 1 — Lab Setup & Architecture
 
-┌─────────────────────┐         ┌──────────────────────────┐
-│   Kali Linux        │         │   Windows 10/11 VM       │
-│   (Attacker)        │◄───────►│   (Target / Log Source)  │
-│   + Wazuh Server    │         │   + Wazuh Agent          │
-│   + Wazuh Dashboard │         │                          │
-└─────────────────────┘         └──────────────────────────┘
-         │                                   │
-         └──────── Same NAT/Host-Only ───────┘
-                     Network
+<img width="1536" height="1024" alt="08c4c048-27f2-4cdc-8e0c-12a07bb352c2" src="https://github.com/user-attachments/assets/f672e0ac-0a5e-47a4-bc48-3723c061813d" />
+
 
 ### PHASE 2 — Install Wazuh Server on Kali Linux
 - Step 1 — System Requirements Check
