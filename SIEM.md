@@ -225,23 +225,62 @@ Wazuh agent_control. List of available agents:
    ID: 002, Name: victim-win, IP: 192.168.56.12, Active
 
 ### Attack on Windows virtual machine 
-* 5.1 Ping Sweep**
+**Ping Sweep**
 - nmap -sn 192.168.46.<img width="423" height="49" alt="Screenshot_20260702_153811" src="https://github.com/user-attachments/assets/4fbb8a1a-8eb3-41ea-85d0-084f0686c0d2" />
 0/24
 <img width="907" height="1004" alt="Screenshot_20260702_153459" src="https://github.com/user-attachments/assets/15afcb06-228f-4ca7-a807-f295533ff01d" />
 
 <img width="423" height="49" alt="Screenshot_20260702_153811" src="https://github.com/user-attachments/assets/0af55157-2a8a-4c5f-b1fc-1f10e22c0016" />
 
-**- 5.2 Port Scan**
+**- Port Scan**
 nmap -sS -T4 -p- 192.168.56.11
 <img width="918" height="647" alt="Screenshot_20260702_160914" src="https://github.com/user-attachments/assets/ce6908b9-97ac-4d77-9a26-e987624464d7" />
 
-**- 5.3 Service Enumeration**
+**- Service Enumeration**
 - nmap -sV -sC -p 21,22,80,139,445,3389 192.168.56.11 -oN service_enum.txt
 -sV = version detection
 -sC = default NSE scripts
 
 <img width="721" height="925" alt="Screenshot_20260702_161644" src="https://github.com/user-attachments/assets/4168df1f-cd3d-4852-82e1-5c3c2f585f9c" />
 
+**Brute Force Login**
+hydra -l admin -P /usr/share/wordlists/rockyou.txt ssh://192.168.56.11 -t 4 -f
+
+**SMB Enumeration**
+enum4linux -a 192.168.56.12
+smbclient -L //192.168.56.12/ -N
+nmap --script smb-enum-shares,smb-enum-users -p 445 192.168.56.12
+
+<img width="616" height="966" alt="Screenshot_20260702_174518" src="https://github.com/user-attachments/assets/d51ecb3a-e41e-4648-92ac-05b250dabcb6" />
 
 
+**- Now this Attacks was Done and now we gonna moving toward the windows vb and log analysing**
+start the wazuh and see all the logs and extract differt want from it on the basis of usuage
+<img width="1913" height="961" alt="Screenshot_20260702_183605" src="https://github.com/user-attachments/assets/8b6c9f4e-c3d2-4414-842b-7a463d01e883" />
+
+Successful logon                         4624
+Failed logon                             4625
+Logon using explicit credentials         4648
+New service installed                    7045
+RDP user authentication succeeded        1149  
+
+- enter that event id manualy in that dashboard and you will get the log of that then we will generate allert of that id
+  
+<img width="1592" height="737" alt="Screenshot_20260703_002601" src="https://github.com/user-attachments/assets/379f9c07-18b8-4481-b579-bfef07573327" />
+
+**Alert Generation**
+The alert threshold is configured in the /var/ossec/etc/ossec.conf configuration file on the Wazuh server within the <alerts> XML tag.
+
+The code block below shows the default alert threshold configuration for events and forwarding alerts via email:
+
+
+<ossec_config>
+  <alerts>
+    <log_alert_level>3</log_alert_level>
+    <email_alert_level>12</email_alert_level>
+  </alerts>
+</ossec_config>
+
+- The <log_alert_level> tag sets the minimum severity level to trigger alerts stored in the /var/ossec/logs/alerts/alerts.log and/or the /var/ossec/logs/alerts/alerts.json file. The default value is 3. The allowed value is any integer from 1 to 16 as referenced in the rules classification guide.
+
+- The <email_alert_level> tag sets the minimum severity level for an alert to generate an email notification. The default value is 12. The allowed value is any integer from 1 to 16. This setting overrides granular email alert configuration. However, the alert_by_email option within individual rules can override both global and granular alert level thresholds to trigger an email alert.
