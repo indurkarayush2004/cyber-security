@@ -151,4 +151,97 @@ done Installation here start Wazuh With https>//<Kali Ip>
 - type agent name as you like.
 - then it will generate you an url, command just coppy it and runn this command into Windows PowerShell (Run as Administrator)
 
-  <img width="1025" height="885" alt="Screenshot_20260701_204951" src="https://github.com/user-attachments/assets/55dc4e52-645c-4cf8-86d2-0ed0bae0f4b1" />
+<img width="1025" height="885" alt="Screenshot_20260701_204951" src="https://github.com/user-attachments/assets/55dc4e52-645c-4cf8-86d2-0ed0bae0f4b1" />
+
+<img width="916" height="766" alt="Screenshot_20260701_094246" src="https://github.com/user-attachments/assets/e1e8ae87-23b0-45bd-baab-8e5184132e9d" />
+
+ ### Installing Wazuh Agent on Windows 11
+**Step 1: Download the Wazuh Agent**
+- Open any web browser on the Windows virtual machine.
+- Visit the official Wazuh website.
+- Navigate to Downloads → Wazuh Agent → Windows.
+- Download the latest Windows Agent installer (.msi).
+
+  **Step 2: Run the Installer**
+- Locate the downloaded .msi installer.
+- Double-click the installer.
+- If the User Account Control (UAC) prompt appears, click Yes.
+- The Wazuh Agent Setup Wizard opens.
+
+  **Step 3: Accept the License Agreement**
+- Read the License Agreement.
+- Select I accept the agreement.
+- Click Next.
+- <img width="912" height="1005" alt="Screenshot_20260701_091524" src="https://github.com/user-attachments/assets/132e6518-2de2-4184-b4d7-546b1fd57203" />
+
+
+**Step 4: Specify the Installation Directory**
+- The default installation path is:
+C:\Program Files (x86)\ossec-agent\  then click next
+
+**Step 5: Configure the Wazuh Manager**
+- During installation, the setup wizard asks for the Manager Address.
+- Enter the IP address of the Kali Linux machine running the Wazuh Manager.
+Example:Manager Address:192.168.56.101
+
+**Step 6: Install the Agent**
+Click Install.
+The installer copies all required files and installs the Wazuh Agent service.
+Wait until the installation completes.
+Click Finish.
+
+**Step 7: Verify the Installation**
+- Open Command Prompt as Administrator and run:
+- sc query WazuhSvc
+- Expected output:STATE : 4 RUNNING
+
+ **Step 8: Verify the Configuration File**
+- Open the configuration file located at:
+- C:\Program Files (x86)\ossec-agent\ossec.conf
+- Verify that the manager IP address is correctly configured.
+<client>
+    <server>
+        <address>192.168.56.101</address>
+        <port>1514</port>
+        <protocol>tcp</protocol>
+    </server>
+</client>
+ **Connecting Agent to Wazuh Manager**
+curl -o wazuh-agent.deb https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.9.0-1_amd64.deb
+sudo WAZUH_MANAGER='<WAZUH-MANAGER-IP>' dpkg -i ./wazuh-agent.deb
+sudo systemctl daemon-reload
+sudo systemctl enable wazuh-agent
+sudo systemctl start wazuh-agent
+
+**Step 9: Verify Agent Registration**
+On the Kali Linux Wazuh Manager, execute:
+<img width="927" height="844" alt="Screenshot_20260701_092747" src="https://github.com/user-attachments/assets/01df8e8d-3750-4306-9f24-273c1dc0b2e2" />
+sudo /var/ossec/bin/agent_control -l
+Expected output:
+
+Wazuh agent_control. List of available agents:
+   ID: 000, Name: wazuh-manager (server), IP: 127.0.0.1, Active
+   ID: 001, Name: victim-linux, IP: 192.168.56.11, Active
+   ID: 002, Name: victim-win, IP: 192.168.56.12, Active
+
+### Attack on Windows virtual machine 
+* 5.1 Ping Sweep**
+- nmap -sn 192.168.46.<img width="423" height="49" alt="Screenshot_20260702_153811" src="https://github.com/user-attachments/assets/4fbb8a1a-8eb3-41ea-85d0-084f0686c0d2" />
+0/24
+<img width="907" height="1004" alt="Screenshot_20260702_153459" src="https://github.com/user-attachments/assets/15afcb06-228f-4ca7-a807-f295533ff01d" />
+
+<img width="423" height="49" alt="Screenshot_20260702_153811" src="https://github.com/user-attachments/assets/0af55157-2a8a-4c5f-b1fc-1f10e22c0016" />
+
+**- 5.2 Port Scan**
+nmap -sS -T4 -p- 192.168.56.11
+<img width="918" height="647" alt="Screenshot_20260702_160914" src="https://github.com/user-attachments/assets/ce6908b9-97ac-4d77-9a26-e987624464d7" />
+
+**- 5.3 Service Enumeration**
+- nmap -sV -sC -p 21,22,80,139,445,3389 192.168.56.11 -oN service_enum.txt
+-sV = version detection
+-sC = default NSE scripts
+
+<img width="721" height="925" alt="Screenshot_20260702_161644" src="https://github.com/user-attachments/assets/4168df1f-cd3d-4852-82e1-5c3c2f585f9c" />
+
+
+
