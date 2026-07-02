@@ -284,3 +284,10 @@ The code block below shows the default alert threshold configuration for events 
 - The <log_alert_level> tag sets the minimum severity level to trigger alerts stored in the /var/ossec/logs/alerts/alerts.log and/or the /var/ossec/logs/alerts/alerts.json file. The default value is 3. The allowed value is any integer from 1 to 16 as referenced in the rules classification guide.
 
 - The <email_alert_level> tag sets the minimum severity level for an alert to generate an email notification. The default value is 12. The allowed value is any integer from 1 to 16. This setting overrides granular email alert configuration. However, the alert_by_email option within individual rules can override both global and granular alert level thresholds to trigger an email alert.
+
+## Conclusion
+- This project successfully demonstrated the collection, monitoring, and analysis of Windows Security Events using the Wazuh SIEM platform. Windows Event Logs were collected through the Wazuh Agent, parsed and normalized by the Wazuh Manager, and analyzed using predefined and custom detection rules. Important security events such as successful logins (4624), failed logins (4625), explicit credential usage (4648), new service installation (7045), and successful RDP authentication (1149) were monitored in real time.
+
+- The project showed how SIEM solutions can automate log collection, event correlation, threat detection, and alert generation, enabling security analysts to identify suspicious activities such as brute-force attacks, credential misuse, unauthorized service creation, and remote access attempts. The Wazuh Dashboard provided centralized visibility for investigating alerts and responding to potential security incidents.
+
+- Overall, the implementation demonstrates that Wazuh is an effective open-source SIEM platform for improving system monitoring, enhancing threat detection capabilities, and supporting incident response in Windows environments.
